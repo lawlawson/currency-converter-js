@@ -2,6 +2,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { v4 as uuidv4 } from 'uuid';
 
 const Currencies = (props) => {
 
@@ -23,7 +24,7 @@ const Currencies = (props) => {
               id='dropdown-basic'>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              {currencyOptions.map(option =>(<Dropdown.Item key={option} value={option}>{option}</Dropdown.Item>))}
+              {currencyOptions.map(option =>(<Dropdown.Item key={uuidv4()} value={option}>{option}</Dropdown.Item>))}
             </Dropdown.Menu>
           </Dropdown>
         </Col>

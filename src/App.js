@@ -9,7 +9,6 @@ const BASE_URL = 'https://api.exchangerate-api.com/v4/latest/GBP';
 
 const App = () => {
   const [currencyOptions, setCurrencyOptions] = useState([]);
-  console.log(currencyOptions);
 
   useEffect(() => {
     fetch(BASE_URL)
