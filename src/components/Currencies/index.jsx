@@ -3,8 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const Currencies = () => {
+const Currencies = (props) => {
 
+  const { currencyOptions } = props;
+  
   return (
     <Container fluid>
       <Row>
@@ -19,13 +21,9 @@ const Currencies = () => {
             <Dropdown.Toggle
               variant='light'
               id='dropdown-basic'>
-              This is where dynamic info goes
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
-              <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
-              <Dropdown.Item href='#/action-2'>Another action</Dropdown.Item>
-              <Dropdown.Item href='#/action-3'>Something else</Dropdown.Item> 
+              {currencyOptions.map(option =>(<Dropdown.Item key={option} value={option}>{option}</Dropdown.Item>))}
             </Dropdown.Menu>
           </Dropdown>
         </Col>
