@@ -14,6 +14,7 @@ const App = () => {
   const [amount, setAmount] = useState(1);
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
   const [exchangeRate, setExchangeRate] = useState();
+  const [convertedAmount, setConvertedAmount] = useState();
   console.log(exchangeRate);
 
   let toAmount, fromAmount;
@@ -29,7 +30,7 @@ const App = () => {
     fetch(BASE_URL)
       .then((res) => res.json())
       .then((data) => {
-        const initialCurrency = Object.keys(data.rates)[0];
+        const initialCurrency = Object.keys(data.rates)[7];
         setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
         setFromCurrency(data.base);
         setToCurrency(initialCurrency);
@@ -37,27 +38,32 @@ const App = () => {
       });
   }, []);
 
+  const convert = () => {
+    setConvertedAmount(exchangeRate * amount);
+  };
+
   return (
     <div className='container'>
       <h1 className='display-1 text-center'>Currency Converter</h1>
       <br />
-      <AmountInput />
+      <AmountInput amount={amount} setAmount={setAmount} />
       <br />
       <Currencies
         currencyOptions={currencyOptions}
         selectedCurrency={fromCurrency}
-        onChangeCurrency={(e) => setToCurrency(e.target.value)}
+        onChangeCurrency={setFromCurrency}
         amount={fromAmount}
       />
       <br />
       <Currencies
         currencyOptions={currencyOptions}
         selectedCurrency={toCurrency}
-        onChangeCurrency={(e) => setToCurrency(e.target.value)}
+        onChangeCurrency={setToCurrency}
         amount={toAmount}
       />
       <br />
-      <Convert />
+      {convertedAmount}
+      <Convert onClick={convert} />
     </div>
   );
 };

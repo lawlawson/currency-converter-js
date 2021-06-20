@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const AmountInput = (props) => {
-  const { amount } = props;
+  const { amount, setAmount } = props;
   return (
     <Container fluid>
       <p>
@@ -14,7 +14,7 @@ const AmountInput = (props) => {
       </p>
       <Row>
         <Col xs={11}>
-          <InputGroup className='mb-3' value={amount}>
+          <InputGroup className='mb-3' value={amount} onChange={(event) => setAmount(event.target.value)} >
             <FormControl
               aria-label='Default'
               aria-describedby='inputGroup-sizing-default'
@@ -24,9 +24,6 @@ const AmountInput = (props) => {
         <Col xs={1}>
           <BsArrowLeftRight
             size={40}
-            onClick={() => {
-              alert('clicked');
-            }}
             style={{ cursor: 'pointer' }}
           />
         </Col>

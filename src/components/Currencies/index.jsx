@@ -18,13 +18,13 @@ const Currencies = (props) => {
           />
         </Col>
         <Col xs={11}>
-          <Dropdown className='ms-5'>
-            <Dropdown.Toggle
+          <Dropdown className='ms-5' >
+            <Dropdown.Toggle 
               variant='light'
               id='dropdown-basic' >
             {selectedCurrency}</Dropdown.Toggle>
-            <Dropdown.Menu value={selectedCurrency} onChange={onChangeCurrency}>
-              {currencyOptions.map(option =>(<Dropdown.Item key={uuidv4()} value={option}>{option}</Dropdown.Item>))}
+            <Dropdown.Menu value={selectedCurrency} >
+              {currencyOptions.map(option =>(<Dropdown.Item key={uuidv4()} value={option} onClick={() => onChangeCurrency(option)}>{option}</Dropdown.Item>))}
             </Dropdown.Menu>
           </Dropdown>
         </Col>
