@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Currencies = (props) => {
 
-  const { currencyOptions } = props;
+  const { currencyOptions, selectedCurrency, onChangeCurrency } = props;
   
   return (
     <Container fluid>
@@ -21,9 +21,9 @@ const Currencies = (props) => {
           <Dropdown className='ms-5'>
             <Dropdown.Toggle
               variant='light'
-              id='dropdown-basic'>
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
+              id='dropdown-basic' >
+            {selectedCurrency}</Dropdown.Toggle>{selectedCurrency}
+            <Dropdown.Menu value={selectedCurrency} onChange={onChangeCurrency}>
               {currencyOptions.map(option =>(<Dropdown.Item key={uuidv4()} value={option}>{option}</Dropdown.Item>))}
             </Dropdown.Menu>
           </Dropdown>

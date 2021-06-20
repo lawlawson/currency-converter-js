@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const AmountInput = () => {
+const AmountInput = (props) => {
+  const { amount } = props;
   return (
     <Container fluid>
       <p>
@@ -13,7 +14,7 @@ const AmountInput = () => {
       </p>
       <Row>
         <Col xs={11}>
-          <InputGroup className='mb-3'>
+          <InputGroup className='mb-3' value={amount}>
             <FormControl
               aria-label='Default'
               aria-describedby='inputGroup-sizing-default'
