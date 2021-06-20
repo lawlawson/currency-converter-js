@@ -22,7 +22,7 @@ const Currencies = (props) => {
             <Dropdown.Toggle
               variant='light'
               id='dropdown-basic' >
-            {selectedCurrency}</Dropdown.Toggle>{selectedCurrency}
+            {selectedCurrency}</Dropdown.Toggle>
             <Dropdown.Menu value={selectedCurrency} onChange={onChangeCurrency}>
               {currencyOptions.map(option =>(<Dropdown.Item key={uuidv4()} value={option}>{option}</Dropdown.Item>))}
             </Dropdown.Menu>
